@@ -1,0 +1,66 @@
+@startuml
+
+' Definizione delle classi principali
+abstract class Piatto {
+    - nome: String
+    - prezzo: double
+    + prepara(): void
+}
+
+class Pasta {
+    - sugo: Sugo
+    + prepara(): void
+}
+
+abstract class Sugo {
+    - tipo: String
+    + getTipo(): String
+}
+
+class Bolognese {
+}
+
+class Siciliana {
+}
+
+class Matriciana {
+}
+
+class SecondoPiatto {
+    - nomeSecondo: String
+    + prepara(): void
+}
+
+class Contorno {
+    - tipo: String
+    + prepara(): void
+}
+
+class Dolce {
+    - tipo: String
+    + prepara(): void
+}
+
+class Cuoco {
+    - nome: String
+    - id: int
+    + preparaPiatto(piatto: Piatto): void
+}
+
+' Relazioni tra le classi
+Pasta --> Sugo : ha
+Piatto <|-- Pasta
+Piatto <|-- SecondoPiatto
+Piatto <|-- Contorno
+Piatto <|-- Dolce
+Sugo <|-- Bolognese
+Sugo <|-- Siciliana
+Sugo <|-- Matriciana
+
+Cuoco --> Piatto : prepara
+Cuoco --> Pasta : prepara
+Cuoco --> SecondoPiatto : prepara
+Cuoco --> Contorno : prepara
+Cuoco --> Dolce : prepara
+
+@enduml
