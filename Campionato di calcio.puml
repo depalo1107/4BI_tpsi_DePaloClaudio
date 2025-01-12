@@ -1,0 +1,28 @@
+@startuml
+actor "FIGC" as FIGC
+actor "Arbitro" as Arbitro
+actor "Allenatore" as Allenatore
+actor "Presidenza" as Presidenza
+actor "Sistema" as Sistema
+
+FIGC -> (Creazione del calendario delle partite)
+FIGC -> (Designazione degli arbitri)
+FIGC -> (Visualizzazione della classifica)
+FIGC -> (Visualizzazione della schedina)
+FIGC -> (Visualizzazione delle partite per girone)
+
+Arbitro -> (Registrazione del risultato della partita)
+
+Allenatore -> (Convocazione dei giocatori)
+
+Presidenza -> (Acquisto/Vendita di giocatori)
+Presidenza -> (Cambio allenatore)
+
+Sistema -> (Gestione delle partite)
+Sistema -> (Memorizzazione dei risultati)
+
+(Registrazione del risultato della partita) --> (Gestione delle partite)
+(Visualizzazione della classifica) --> (Gestione delle partite)
+(Visualizzazione della schedina) --> (Gestione delle partite)
+(Visualizzazione delle partite per girone) --> (Gestione delle partite)
+@enduml
