@@ -1,0 +1,45 @@
+@startuml
+class Prigione {
+    - nome: String
+    - sistemiMonitoraggio: List<SistemaMonitoraggio>
+    + aggiungiSistemaMonitoraggio(sistema: SistemaMonitoraggio): void
+}
+
+class SistemaMonitoraggio {
+    - tipo: String
+    - sensori: List<Sensore>
+    + calcolaStatistiche(): void
+    + aggiungiSensore(sensore: Sensore): void
+}
+
+abstract class Sensore {
+    - id: String
+    + accendi(): void
+    + spegni(): void
+    + diagnostica(): void
+    + eseguiFunzione(): void
+}
+
+class SensoreTemperatura extends Sensore {
+    + diagnostica(): void
+    + eseguiFunzione(): void
+}
+
+class SensoreMovimento extends Sensore {
+    + diagnostica(): void
+    + eseguiFunzione(): void
+}
+
+class Statistiche {
+    - data: Date
+    - valore: float
+    + calcola(): void
+}
+
+Prigione "1" --> "*" SistemaMonitoraggio : contiene
+SistemaMonitoraggio "1" --> "*" Sensore : ha
+Sensore <|-- SensoreTemperatura
+Sensore <|-- SensoreMovimento
+SistemaMonitoraggio --> Statistiche : calcola
+
+@enduml
