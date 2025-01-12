@@ -1,13 +1,13 @@
 @startuml
 class Prigione {
     - nome: String
-    - sistemiMonitoraggio: List<SistemaMonitoraggio>
+    - sistemiMonitoraggio: SistemaMonitoraggio[]
     + aggiungiSistemaMonitoraggio(sistema: SistemaMonitoraggio): void
 }
 
 class SistemaMonitoraggio {
     - tipo: String
-    - sensori: List<Sensore>
+    - sensori: Sensore[]
     + calcolaStatistiche(): void
     + aggiungiSensore(sensore: Sensore): void
 }
