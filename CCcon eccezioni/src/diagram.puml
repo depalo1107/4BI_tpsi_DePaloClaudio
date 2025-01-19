@@ -1,0 +1,26 @@
+// @startuml
+package CCManagement {
+    class Exception
+    class CifraNegativaException {
+    }
+    class SaldoInsufficienteException {
+    }
+    class CC {
+        - nomeCorrentista : String
+        - saldo : double
+        + preleva(double amount) : void
+        + deposita(double amount) : void
+    }
+    Exception <|-- CifraNegativaException
+    Exception <|-- SaldoInsufficienteException
+    CC -- CifraNegativaException
+    CC -- SaldoInsufficienteException
+}
+
+package Main {
+    class Main {
+        - scanner : Scanner
+    }
+    CC <---- Main : istanzia
+}
+@enduml
