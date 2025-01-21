@@ -1,0 +1,43 @@
+@startuml
+
+actor "Capo di Polizia" as capo_di_polizia
+actor "Detective" as detective
+actor "Agente di Pattuglia" as agente_pattuglia
+actor "Sergeante di Scrivania" as sergente_scrivania
+actor "Sindaco" as sindaco
+actor "Cittadino" as cittadino
+actor "VIP" as vip
+
+usecase "Classificare i fascicoli dei casi" as UC1
+usecase "Organizzare incontri privati con il sindaco" as UC2
+usecase "Fare rapporto al Capo di Polizia" as UC3
+usecase "Pattugliare le strade" as UC4
+usecase "Aggiornare l'archivio delle prove" as UC5
+usecase "Interrogare i sospettati" as UC6
+usecase "Investigare i crimini" as UC7
+usecase "Interrogare i testimoni" as UC8
+usecase "Colloquio con il sindaco per VIP" as UC9
+
+capo_di_polizia --- UC1
+capo_di_polizia --- UC2
+capo_di_polizia --- UC3
+
+agente_pattuglia --- UC4
+agente_pattuglia --- UC5
+agente_pattuglia --- UC3
+
+detective --- UC6
+detective --- UC7
+detective --- UC8
+detective --- UC3
+
+sergente_scrivania --- UC6
+sergente_scrivania --- UC7
+sergente_scrivania --- UC5
+sergente_scrivania --- UC3
+
+vip -- UC9
+cittadino -- UC8
+detective -- UC9 : <<include>>
+
+@enduml
